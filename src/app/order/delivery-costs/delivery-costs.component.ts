@@ -23,5 +23,5 @@ export class DeliveryCostsComponent implements OnInit {
     return this.delivery + this.itemsValue;
   }
 
-  
+
 }

@@ -3,7 +3,7 @@
 </section>
 <section class="content">
   <section class="invoice">
-    <form #form="ngForm" novalidate>
+    <form [formGroup]="orderForm" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
@@ -12,28 +12,52 @@
         </div>
       </div>
 
-      <div class="row invoice-info">
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="lead">Seus dados:</p>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <mt-input-container>
+            <!-- container para inputs adicionar input aqui. -->
+            <input class="form-control" formControlName="name" errorMessage="Campo obrigatório" successMessage="Ok" label="Nome:" autocomplete="off" placeholder="Nome">
+          </mt-input-container>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <mt-input-container>
+            <!-- container para inputs adicionar input aqui. -->
+            <input class="form-control" formControlName="email" errorMessage="Campo obrigatório" successMessage="Ok" label="E-mail:" autocomplete="off" placeholder="E-mail">
+          </mt-input-container>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+          <mt-input-container>
+            <!-- container para inputs adicionar input aqui. -->
+            <input class="form-control" formControlName="emailConfirmation" errorMessage="Campo obrigatório" successMessage="Ok" label="Confirmação de E-mail:"
+              autocomplete="off" placeholder="Confirme seu e-mail">
+          </mt-input-container>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="col-xs-12">
           <p class="lead">Endereço de Entrega:</p>
         </div>
         <div class="col-sm-6 col-xs-12">
           <mt-input-container>
             <!-- container para inputs adicionar input aqui. -->
-            <input class="form-control" name="address" errorMessage="Campo obrigatório" successMessage="Ok" label="Endereço:" ngModel
-              required minlength="5" autocomplete="off" placeholder="Endereço">
+            <input class="form-control" formControlName="address" errorMessage="Campo obrigatório" successMessage="Ok" label="Endereço:" autocomplete="off" placeholder="Endereço">
           </mt-input-container>
         </div>
         <div class="col-sm-3 col-xs-6">
           <mt-input-container>
             <!-- container para inputs adicionar input aqui. -->
-            <input type="text" class="form-control" name="number" pattern="^[0-9]*$" required ngModel placeholder="Número" errorMessage="Campo obrigatório"
+            <input type="text" class="form-control" formControlName="number" placeholder="Número" errorMessage="Campo obrigatório"
               label="Número:" autocomplete="false">
           </mt-input-container>
         </div>
         <div class="col-sm-3 col-xs-6">
           <mt-input-container>
             <!-- container para inputs adicionar input aqui. -->
-            <input type="text" class="form-control" name="optionalAddress" ngModel placeholder="Complemento">
+            <input type="text" class="form-control" formControlName="optionalAddress" placeholder="Complemento">
           </mt-input-container>
         </div>
         <!-- /.col -->
@@ -56,7 +80,7 @@
           <p class="lead">Formas de Pagamento:</p>
 
           <div class="form-group">
-            <mt-radio [options]="paymentOptions" name="paymentOption" ngModel required></mt-radio>
+            <mt-radio [options]="paymentOptions" formControlName="paymentOption"></mt-radio>
           </div>
 
         </div>
@@ -72,7 +96,7 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <button (click)="checkOrder(form.value)" [disabled]="!form.valid || !cartItems().length" href="order-summary.html" class="btn btn-success pull-right">
+        <button (click)="checkOrder(orderForm.value)" [disabled]="!orderForm.valid || !cartItems().length" href="order-summary.html" class="btn btn-success pull-right">
           <i class="fa fa-credit-card"></i> Concluir Pedido
         </button>
       </div>
