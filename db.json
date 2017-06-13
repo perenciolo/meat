@@ -170,7 +170,7 @@
       "id": "chocpop",
       "imagePath": "assets/img/foods/chocpop.png",
       "name": "Picolé de Brigadeiro",
-      "description": "Picolé de brigadeiro recheado com côco.",
+      "description": "Picolé de brigadeiro recheado com coco.",
       "price": 8.5,
       "restaurantId": "ice-cream"
     },
@@ -370,5 +370,61 @@
       "restaurantId": "tasty-treats"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "address": "Rua Mariano de Oliveira",
+      "number": "1156",
+      "optionalAddress": "",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "icestd.png"
+        },
+        {
+          "quantity": 1,
+          "menuId": "chocpop"
+        },
+        {
+          "quantity": 1,
+          "menuId": "sunday"
+        }
+      ],
+      "id": 1
+    },
+    {
+      "address": "Rua ties",
+      "number": "132",
+      "optionalAddress": "",
+      "paymentOption": "REF",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "capp"
+        },
+        {
+          "quantity": 1,
+          "menuId": "espreso"
+        },
+        {
+          "quantity": 1,
+          "menuId": "starb"
+        }
+      ],
+      "id": 2
+    },
+    {
+      "address": "Rua M",
+      "number": "123",
+      "optionalAddress": "",
+      "paymentOption": "DEB",
+      "orderItems": [
+        {
+          "quantity": 1,
+          "menuId": "chocpop"
+        }
+      ],
+      "id": 3
+    }
+  ]
 }
