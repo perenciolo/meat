@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { MenuComponent } from './restaurant-detail/menu/menu.component';
@@ -15,11 +14,11 @@ export const ROUTES: Routes = [
     },
     {
         path: 'about',
-        component: AboutComponent
+        loadChildren: './about/about.module#AboutModule'
     },
     {
         path: 'order',
-        component: OrderComponent
+        loadChildren: './order/order.module#OrderModule'
     },
     {
         path: 'order-summary',

@@ -3,6 +3,7 @@
 </section>
 <section class="content">
   <section class="invoice">
+
     <form [formGroup]="orderForm" novalidate>
       <div class="row">
         <div class="col-xs-12">
@@ -13,26 +14,28 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-9">
           <p class="lead">Seus dados:</p>
         </div>
+        <div class="col-xs-12 col-sm-3">
+          <span class="help-block pull-right has-error-block" *ngIf="orderForm.hasError('emailsNotMatch')"><i class="fa fa-remove"></i> E-mails não conferem</span>
+        </div>
         <div class="col-xs-12 col-sm-6">
-          <mt-input-container>
+          <mt-input-container errorMessage="Informe seu nome" successMessage="Ok" label="Nome:">
             <!-- container para inputs adicionar input aqui. -->
-            <input class="form-control" formControlName="name" errorMessage="Campo obrigatório" successMessage="Ok" label="Nome:" autocomplete="off" placeholder="Nome">
+            <input class="form-control" formControlName="name" autocomplete="off" placeholder="Nome">
           </mt-input-container>
         </div>
         <div class="col-xs-12 col-sm-3">
-          <mt-input-container>
+          <mt-input-container errorMessage="E-mail inválido" successMessage="Ok" label="E-mail:">
             <!-- container para inputs adicionar input aqui. -->
-            <input class="form-control" formControlName="email" errorMessage="Campo obrigatório" successMessage="Ok" label="E-mail:" autocomplete="off" placeholder="E-mail">
+            <input class="form-control" formControlName="email" autocomplete="off" placeholder="E-mail">
           </mt-input-container>
         </div>
         <div class="col-xs-12 col-sm-3">
-          <mt-input-container>
+          <mt-input-container errorMessage="E-mail não confere" successMessage="Ok" label="Confirmação de E-mail:">
             <!-- container para inputs adicionar input aqui. -->
-            <input class="form-control" formControlName="emailConfirmation" errorMessage="Campo obrigatório" successMessage="Ok" label="Confirmação de E-mail:"
-              autocomplete="off" placeholder="Confirme seu e-mail">
+            <input class="form-control" formControlName="emailConfirmation" autocomplete="off" placeholder="Confirme seu e-mail">
           </mt-input-container>
         </div>
       </div>
@@ -42,20 +45,19 @@
           <p class="lead">Endereço de Entrega:</p>
         </div>
         <div class="col-sm-6 col-xs-12">
-          <mt-input-container>
+          <mt-input-container errorMessage="Informe um endereço válido" successMessage="Ok" label="Endereço:">
             <!-- container para inputs adicionar input aqui. -->
-            <input class="form-control" formControlName="address" errorMessage="Campo obrigatório" successMessage="Ok" label="Endereço:" autocomplete="off" placeholder="Endereço">
+            <input class="form-control" formControlName="address" autocomplete="off" placeholder="Endereço">
           </mt-input-container>
         </div>
         <div class="col-sm-3 col-xs-6">
-          <mt-input-container>
+          <mt-input-container errorMessage="Número obrigatório" successMessage="Ok" label="Número:">
             <!-- container para inputs adicionar input aqui. -->
-            <input type="text" class="form-control" formControlName="number" placeholder="Número" errorMessage="Campo obrigatório"
-              label="Número:" autocomplete="false">
+            <input type="text" class="form-control" formControlName="number" placeholder="Número" autocomplete="false">
           </mt-input-container>
         </div>
         <div class="col-sm-3 col-xs-6">
-          <mt-input-container>
+          <mt-input-container successMessage="Ok" label="Complemento:">
             <!-- container para inputs adicionar input aqui. -->
             <input type="text" class="form-control" formControlName="optionalAddress" placeholder="Complemento">
           </mt-input-container>
@@ -96,9 +98,10 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <button (click)="checkOrder(orderForm.value)" [disabled]="!orderForm.valid || !cartItems().length" href="order-summary.html" class="btn btn-success pull-right">
+        <button (click)="checkOrder(orderForm.value)" [disabled]="!orderForm.valid || !cartItems().length" href="order-summary.html"
+          class="btn btn-success pull-right">
           <i class="fa fa-credit-card"></i> Concluir Pedido
-        </button>
+          </button>
       </div>
     </div>
 
